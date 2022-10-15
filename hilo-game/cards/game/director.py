@@ -19,14 +19,19 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self.cards = []
-        self.is_playing = True
-        self.total_score = 300
-        self.hi_lo = ''
+        self.card = Card()
+        self.current_card = self.card.draw() 
+        self.next_card = self.card.draw()
+        self.score = 300
 
-        for i in range(2):
-            card = Card()
-            self.cards.append(card)
+        # self.cards = []
+        self.is_playing = True
+        # self.total_score = 300
+        # self.hi_lo = ''
+
+        # for i in range(2):
+        #     card = Card()
+        #     self.cards.append(card)
 
     def start_game(self):
         """Starts the game by running the main game loop.
@@ -38,7 +43,7 @@ class Director:
             self.get_inputs()
             self.do_updates()
             self.do_outputs()
-        print(f'\nGame over, your score was {self.total_score}. \nTry again to improve your score!')
+        print(f'\nGame over, your score was {self.score}. \nTry again to improve your score!')
 
     def get_inputs(self):
         """Generate new card values, then ask the user their hi_lo guess.
@@ -47,13 +52,15 @@ class Director:
             self (Director): An instance of Director.
         """
 
-        for i in range(2):
-            card = self.cards[i]
-            card.draw()
-        print(f'\nThe card is: {self.cards[0].value}')
+        # for i in range(2):
+        #     card = self.cards[i]
+        #     card.draw()
+        # print(f'\nThe card is: {self.cards[0].value}')
+        print(f"The card is:{self.current_card}")
         while True:
-            self.hi_lo = input('Higher or lower? [h/l]: ')
-            if self.hi_lo.upper() == 'H' or self.hi_lo.upper() == 'L':
+            self.prompt_card = input("Higher or Lower (h/l)? ")
+            # self.hi_lo = input('Higher or lower? [h/l]: ')
+            if self.prompt_card.upper() == 'H' or self.prompt_card.upper() == 'L':
                 break
             else:
                 print('That is not a valid response.')
@@ -67,16 +74,29 @@ class Director:
         if not self.is_playing:
             return
         
-        first_card = self.cards[0].value
-        second_card = self.cards[1].value
-        if self.hi_lo.upper() == 'H' and first_card <= second_card:
-            self.total_score += 100
-        elif self.hi_lo.upper() == 'L' and first_card >= second_card:
-            self.total_score += 100
-        else:
-            self.total_score -= 75
-        if self.total_score <= 0:
-            self.is_playing = False
+        if self.prompt_card == "l" and self.current_card > self.next_card:
+            self.score += 100
+        elif self.prompt_card == "l" and self.current_card < self.next_card:
+            self.score -= 75
+        elif self.prompt_card == "h" and self.current_card > self.next_card:
+            self.score -= 75
+        elif self.prompt_card == "h" and self.current_card < self.next_card:
+            self.score += 100
+        self.current_card = self.card.draw()
+        self.next_card = self.card.draw()
+        self.is_playing = (self.score > 0)
+
+
+        # first_card = self.cards[0].value
+        # second_card = self.cards[1].value
+        # if self.hi_lo.upper() == 'H' and first_card <= second_card:
+        #     self.total_score += 100
+        # elif self.hi_lo.upper() == 'L' and first_card >= second_card:
+        #     self.total_score += 100
+        # else:
+        #     self.total_score -= 75
+        # if self.total_score <= 0:
+        #     self.is_playing = False
 
 
     def do_outputs(self):
@@ -88,9 +108,13 @@ class Director:
         if not self.is_playing:
             return
         
-        value = f"{self.cards[1].value} "
-        print(f"Next card was: {value}")
-        print(f"Your score is: {self.total_score}")
-        self.is_playing = (self.total_score > 0)
+        # value = f"{self.cards[1].value} "
+        print(f"The next card was {self.next_card}")
+        print(f"Your score is {self.score}")
+
+        # print(f"Next card was: {value}")
+        # print(f"Your score is: {self.total_score}")
+        # self.is_playing = (self.total_score > 0)
         play_again = input("Play again? [y/n]: ")
         self.is_playing = (play_again == "y")
+        print()

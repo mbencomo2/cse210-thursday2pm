@@ -22,7 +22,9 @@ class Card:
             Args:
                 self (Card): An instance of Card.
             """
-        self.value = 0
+        # self.value = 0
+        self.current_card = ''
+
 
 
 # 3) Create the roll(self) method. Use the following method comment.
@@ -33,5 +35,7 @@ class Card:
         Args:
             self (Card): An instance of Card.
         """
-        self.value = randint(1, 13)
+        # self.value = randint(1, 13)
+        self.current_card = randint(1, 13)
+        return self.current_card
 
