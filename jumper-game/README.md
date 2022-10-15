@@ -1,7 +1,7 @@
 # jumper
 Experience the thrill of skydiving!<i>Jumper</i> is similar to hangman but with a twist. 
 The rules are simple. The player attempts to guess what the word chosen is, and each wrong letter causes part of your
- parachute to break! Guessing continues until the either you guess the word correctly, or your parachute breaks.
+parachute to break! Guessing continues until the either you guess the word correctly, or your parachute breaks.
 
 ---
 ## Getting Started
