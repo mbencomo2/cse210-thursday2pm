@@ -1,5 +1,5 @@
 class Jumper:
-    """The Person jumping with the skydieve.
+    """The Person jumping with the parachute.
 
     The responsibility of the 
     jumper is to control the parachute 
@@ -7,7 +7,7 @@ class Jumper:
     
     Attributes:
         _parachute (string): The parachute for the jumper
-        _man (string): The man skydieving
+        _man (string): The man skydiving
     """
 
     def __init__(self):
@@ -21,39 +21,35 @@ class Jumper:
             "/___\\",
             "\   /",
             " \ /",
-            "  o"
-        ]
-        self._man = [
+            "  o",
             " /|\\",
             " / \\",
-            "^^^^^^^^"
+           "^^^^^"
         ]
 
-    def _get_skydiever(self):
-        """Gets the jumper"
+    def _get_Parachute(self):
+        """Gets the jumper
         Args:
             self (Jumper): An instance of Jumper.
         """
-        for line in self._parachute:
-            print(line)
-        for line in self._man:
-            print(line)
-
-    def _set_skydiever(self):
-        """Draws the jumper"
-        Args:
-            self (Jumper): An instance of Jumper.
-        """
-        self.jumper = self._get_skydiever()
+        return "\n".join(self._parachute)
 
     def _cut_line(self):
-        pass
+        """Cuts the first line in the parachute.
+        Args:
+            self(Jumper): An instance of Jumper"""
+        self._parachute.pop(0)
 
-    def _is_fallen(self):
-        pass
+    def _get_safety(self):
+        """Returns whether the parachute has broken or not
+        Args:
+            self(Jumper): An instance of Jumper
+        """
+        return (self._parachute[-4] == 1)
     
-
-
-# Test the drawings
-jump = Jumper()
-jump._set_skydiever()
+    def land_safely(self):
+        """land_safely prints a congratulatory message
+        Args:
+            self (Jumper): An instance of Jumper.
+        """
+        print("Congratulations! You have guessed the word")
