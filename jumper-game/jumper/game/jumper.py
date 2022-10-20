@@ -24,10 +24,10 @@ class Jumper:
             "  o",
             " /|\\",
             " / \\",
-           "^^^^^"
+            "^^^^^"
         ]
 
-    def get_Parachute(self):
+    def get_Parachute(self) -> str:
         """Gets the jumper
         Args:
             self (Jumper): An instance of Jumper.
@@ -40,19 +40,22 @@ class Jumper:
             self(Jumper): An instance of Jumper"""
         self._parachute.pop(0)
 
-    def get_safety(self):
+    def get_safety(self) -> bool:
         """Returns whether the parachute has broken or not
         Args:
             self(Jumper): An instance of Jumper
         """
-        return (self._parachute[-4] == 1)
+        if len(self._parachute) <= 4:
+            return True
+        else:
+            return False
     
-    def land_safely(self):
+    def land_safely(self) -> str:
         """land_safely prints a congratulatory message
         Args:
             self (Jumper): An instance of Jumper.
         """
-        print("Congratulations! You have guessed the word")
+        return "Congratulations! You have guessed the word"
 
     def switch_head(self):
         """switches the skydiver's head by an x
@@ -60,4 +63,3 @@ class Jumper:
             self (Jumper): An instance of Jumper.
         """
         self._parachute[0] ="  x"
-
