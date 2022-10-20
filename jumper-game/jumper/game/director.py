@@ -39,7 +39,7 @@ class Director:
             self._do_outputs()
 
         if not self._jumper.get_safety():
-            self._terminal_service.write_text(self._jumper.land_safely()) #land_safely prints a congratulatory message
+            self._terminal_service.write_text(self._jumper.land_safely())
         else:
             self._terminal_service.write_text(f'R.I.P. - The secret word was: "{self._word.get_word()}"')
 
@@ -68,12 +68,12 @@ class Director:
         if self._guess in self._word.get_word():
             self._word.set_guess(self._guess)
         else: 
-            self._jumper._cut_line()
+            self._jumper.cut_line()
 
         # Check if our guesses up to this point match the secret word, otherwise check the safety of the jumper
         if self._word.get_guess() == self._word.get_word():
             self._is_playing = False
-        elif self._jumper._get_safety(): #get_safety returns whether the parachute has broken or not
+        elif self._jumper.get_safety():
             self._is_playing = False
         
     def _do_outputs(self):
@@ -82,6 +82,6 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        #get_guess returns our guesses as a string, get_parachute returns our jumper with parachute as a string
-        display = f'\n{self._word.get_guess()}\n\n{self._jumper._get_Parachute()}' 
+
+        display = f'\n{self._word.get_guess()}\n\n{self._jumper.get_Parachute()}'
         self._terminal_service.write_text(display)
