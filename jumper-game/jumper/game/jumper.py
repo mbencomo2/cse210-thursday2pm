@@ -61,12 +61,3 @@ class Jumper:
         """
         self._parachute[0] ="  x"
 
-
-jump = Jumper()
-
-jump.cut_line()
-jump.cut_line()
-jump.cut_line()
-jump.cut_line()
-jump.switch_head()
-print(jump.get_Parachute())
