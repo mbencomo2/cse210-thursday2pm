@@ -38,10 +38,10 @@ class Director:
             self._do_updates()
             self._do_outputs()
 
-        if not self._jumper.get_safety():
-            self._terminal_service.write_text(self._jumper.land_safely())
-        else:
+        if self._jumper.get_safety():
             self._terminal_service.write_text(f'R.I.P. - The secret word was: "{self._word.get_word()}"')
+        else:
+            self._terminal_service.write_text(self._jumper.land_safely())
 
     def _get_inputs(self):
         """obtains inputs from the player
@@ -74,6 +74,7 @@ class Director:
         if self._word.get_guess() == self._word.get_word():
             self._is_playing = False
         elif self._jumper.get_safety():
+            self._jumper.switch_head()
             self._is_playing = False
         
     def _do_outputs(self):
