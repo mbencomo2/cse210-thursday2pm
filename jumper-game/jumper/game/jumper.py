@@ -27,20 +27,20 @@ class Jumper:
            "^^^^^"
         ]
 
-    def _get_Parachute(self):
+    def get_Parachute(self):
         """Gets the jumper
         Args:
             self (Jumper): An instance of Jumper.
         """
         return "\n".join(self._parachute)
 
-    def _cut_line(self):
+    def cut_line(self):
         """Cuts the first line in the parachute.
         Args:
             self(Jumper): An instance of Jumper"""
         self._parachute.pop(0)
 
-    def _get_safety(self):
+    def get_safety(self):
         """Returns whether the parachute has broken or not
         Args:
             self(Jumper): An instance of Jumper
@@ -53,3 +53,20 @@ class Jumper:
             self (Jumper): An instance of Jumper.
         """
         print("Congratulations! You have guessed the word")
+
+    def switch_head(self):
+        """switches the skydiver's head by an x
+        Args:
+            self (Jumper): An instance of Jumper.
+        """
+        self._parachute[0] ="  x"
+
+
+jump = Jumper()
+
+jump.cut_line()
+jump.cut_line()
+jump.cut_line()
+jump.cut_line()
+jump.switch_head()
+print(jump.get_Parachute())
