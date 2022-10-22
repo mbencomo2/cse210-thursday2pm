@@ -31,4 +31,5 @@ root                    (project root folder)
 
 ## Authors
 * Matt Manley (manleym@byui.edu)
+* Matt Bencomo (matt.ibencomo@gmail.com)
 * Scott Burton (burtons@byui.edu)
