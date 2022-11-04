@@ -8,7 +8,7 @@ class Gem(Actor):
     An object falls from the crumbling cliff face above! It can either be a shining gem or a dangerous rock (wouldn't both hurt?). 
     Try and catch the gems and avoid the rocks!
 
-    The purpose of a Object is to move down the screen, and cause the player's score to change when colliding. Also, reset it's position and 
+    The purpose of a gem is to move down the screen, and cause the player's score to change when colliding. Also, reset it's position and 
     velocity when exiting the screen.
 
     Attributes:
@@ -17,10 +17,10 @@ class Gem(Actor):
 
     def __init__(self) -> None:
         '''
-        Constructs the Object
+        Constructs the Gem
 
         Arguments:
-          self: A reference to the Object class
+          self: A reference to the Gem class
         '''
         self._points = 0
     
@@ -29,7 +29,7 @@ class Gem(Actor):
       Set the _points attribute to the given value.
 
       Arguments:
-        points (int): The points value of the object
+        points (int): The points value of the Gem
       '''
       self._points = points
 
@@ -38,23 +38,23 @@ class Gem(Actor):
       Gets the value of the _points attribute.
 
       Arguments:
-        self (Object): reference to the Object class
+        self (Gem): reference to the Gem class
       '''
       return self._points
 
-    def reset(self, max_y: int) -> None:
+    def reset(self, max_x: int) -> None:
       '''
-      The objects home is the starting position, this function
+      The Gems home is the starting position, this function
       resets it to a different position and velocity when exiting the screen.
 
       Arguments:
-        self (Object): A reference to the Object class
+        self (Gem): A reference to the Gem class
         max_x (int): The largest x value of the window
         max_y (int): The largest Y value of the window
         scale (int): The size of the cells used to scale the point
       '''
-      #We need the object to appear at the top of the screen in a random column
-      home = Point(randint(1, max_y), 0).scale(super().get_font_size())
+      #We need the Gem to appear at the top of the screen in a random column
+      home = Point(randint(1, max_x), 0).scale(super().get_font_size())
       velocity = Point(0, randint(1, 2)).scale(super().get_font_size())
       super().set_position(home)
       super().set_velocity(velocity)
