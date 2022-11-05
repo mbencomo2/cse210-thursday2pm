@@ -53,8 +53,24 @@ class Gem(Actor):
         max_y (int): The largest Y value of the window
         scale (int): The size of the cells used to scale the point
       '''
+      # type = 1: Gem
+      # type = 2: Rock
+      type = randint(1,2)
+      speed = randint(1,2)
+
+      if type == 1:
+        super().set_text('*')
+        self._points = 1
+      else:
+        super().set_text('O')
+        self._points = -1
+
+      # If the speed is two then the points value is doubled.
+      self._points *= 2 if speed == 2 else 1
+
+        
       #We need the Gem to appear at the top of the screen in a random column
       home = Point(randint(1, max_x), 0).scale(super().get_font_size())
-      velocity = Point(0, randint(1, 2)).scale(super().get_font_size())
+      velocity = Point(0, speed).scale(super().get_font_size())
       super().set_position(home)
       super().set_velocity(velocity)

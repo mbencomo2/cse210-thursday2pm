@@ -2,8 +2,7 @@
 ---
 He who is not contented with what he has, would not be contented with what he would like to have.-Socrates-
 
-Greed is a game in which the player seeks to gather as many falling gems as possible. The game continues as long as the 
-player wants more! 
+Greed is a game in which the player seeks to gather as many falling gems as possible. There are two speeds of falling gems, and the faster ones offer twice as many points. Do you give in and take the risk? The game continues as long as the player wants more! 
 
 ## Getting Started
 ---
@@ -22,7 +21,7 @@ project folder. Select the main module inside the hunter folder and click the "r
 
 ## Controls
 ---
-The player is represented by '#', and is controlled with the left and right arrow keys. You can wrap off the screen and appear on the other side (portals, baby!).
+The player is represented by '#', and is controlled with the left and right arrow keys. You can wrap off the screen and appear on the other side (portals!).
 
 ## Project Structure
 ---
