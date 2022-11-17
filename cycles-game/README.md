@@ -34,3 +34,4 @@ root                    (project root folder)
 ---
 * TODO: Add your name and email here
 * Matt Bencomo [matt.ibencomo@gmail.com] ¯\_(ツ)_/¯
+* Sebastiao Matusse [matussevaletegmail.com/mat21026@byui.edu] :)
