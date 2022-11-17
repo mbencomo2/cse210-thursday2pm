@@ -20,8 +20,8 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction1 = Point(constants.CELL_SIZE, 0)
-        self._direction2 = Point(constants.CELL_SIZE, 0)
+        self._direction1 = Point(0, -1 *constants.CELL_SIZE)
+        self._direction2 = Point(0, -1 *constants.CELL_SIZE)
 
     def execute(self, cast, script):
         """Executes the control actors action.
@@ -65,3 +65,14 @@ class ControlActorsAction(Action):
         players = cast.get_actors("players")
         players[0].turn_head(self._direction1)
         players[1].turn_head(self._direction2)
+
+    def reset_velocities(self) -> None:
+        '''
+        Sets the starting head directions when resetting the game.
+
+        Args:
+            cast (Cast): The cast of actors in the game.
+        '''
+        direction = Point(0, -1 * constants.CELL_SIZE)
+        self._direction1 = direction
+        self._direction2 = direction
